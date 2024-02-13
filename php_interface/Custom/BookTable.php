@@ -94,10 +94,10 @@ class BookTable extends Entity\DataManager
     {
 
         $select = [
-
             'AUTHORS.AUTHORS_COUNT',
             'INDIVIDUAL_PROFIT',
-            'TOTAL_PROFIT'
+            'TOTAL_PROFIT',
+            'COPIES_CNT'
         ];
 
         $result = \BookTable::getList(
@@ -114,7 +114,7 @@ class BookTable extends Entity\DataManager
                     new Entity\ExpressionField(
                         'TOTAL_PROFIT',
                         'IFNULL((%s * %s), 0)',
-                        ['INDIVIDUAL_PROFIT', 'BOOKS_COUNT']
+                        ['INDIVIDUAL_PROFIT', 'COPIES_CNT']
                     )
                 ]
             ]
